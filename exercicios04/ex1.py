@@ -2,7 +2,7 @@
 
 size = int(input("Type an size of vector: "))
 
-vector = []
+vector  = []
 
 for i in range(size):
     element = int(input(f"Type an element for {i + 1}° position: "))
