@@ -7,7 +7,7 @@ colecao = pegar_colecao("locais")
 tela = Tk()
 tela.title("Controle de Locais Turísticos")
 tela.geometry("900x600")
-tela.configure(bg="#2E8B57")  # Verde escuro
+tela.configure(bg="#2E8B57") 
 
 var_guia = StringVar()
 var_guia.set("sim")
@@ -107,7 +107,6 @@ def limpar():
     txt_valor.delete(0, END)
     var_guia.set("sim")
 
-# INTERFACE (design anterior mantido)
 frame_cad = LabelFrame(tela, text="Cadastro de Locais Turísticos", font=("Arial", 12, "bold"), padx=10, pady=10)
 frame_cad.pack(padx=10, pady=5, fill="x")
 

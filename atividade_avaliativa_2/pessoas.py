@@ -120,7 +120,6 @@ def limpar():
     txt_data_nasc.delete(0, END)
     txt_descricao.delete("1.0", END)
 
-# INTERFACE (design anterior mantido)
 frame_cad = LabelFrame(tela, text="Cadastro de Pessoas", font=("Arial", 12, "bold"), padx=10, pady=10)
 frame_cad.pack(padx=10, pady=5, fill="x")
 

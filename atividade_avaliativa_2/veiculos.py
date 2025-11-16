@@ -7,7 +7,7 @@ colecao = pegar_colecao("veiculos")
 tela = Tk()
 tela.title("Controle de Veículos")
 tela.geometry("900x600")
-tela.configure(bg="#8FBC8F")  # Verde capim
+tela.configure(bg="#8FBC8F")
 
 var_tipo = StringVar()
 var_tipo.set("sim")
@@ -107,7 +107,6 @@ def limpar():
     txt_modelo.delete(0, END)
     var_tipo.set("sim")
 
-# INTERFACE (design anterior mantido)
 frame_cad = LabelFrame(tela, text="Cadastro de Veículos", font=("Arial", 12, "bold"), padx=10, pady=10)
 frame_cad.pack(padx=10, pady=5, fill="x")
 

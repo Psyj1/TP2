@@ -23,7 +23,7 @@ def entrar():
     else:
         messagebox.showerror("Erro", "Usuário ou senha incorretos!")
 
-# Centralizar
+
 lar_tela = tela.winfo_screenwidth()
 alt_tela = tela.winfo_screenheight()
 x = (lar_tela - 400) // 2
