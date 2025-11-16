@@ -1,43 +1,58 @@
 from tkinter import *
-import subprocess
 import os
+import subprocess
+import sys
+
+def get_project_root():
+    """Encontra a raiz do projeto TP2"""
+    current_dir = os.path.dirname(os.path.abspath(__file__))
+    # Sobe um nível para a pasta TP2 se estiver em atividade_avaliativa_2
+    if current_dir.endswith('atividade_avaliativa_2'):
+        return os.path.dirname(current_dir)  # Volta para TP2
+    return current_dir
+
+def executar_arquivo(nome_arquivo):
+    """Executa arquivos Python da pasta atividade_avaliativa_2"""
+    try:
+        project_root = get_project_root()
+        pasta_arquivos = os.path.join(project_root, "atividade_avaliativa_2")
+        caminho_completo = os.path.join(pasta_arquivos, nome_arquivo)
+        
+        print(f"Tentando abrir: {caminho_completo}")  # Debug
+        
+        if os.path.exists(caminho_completo):
+            subprocess.Popen([sys.executable, caminho_completo])
+        else:
+            print(f"Arquivo não encontrado: {caminho_completo}")
+    except Exception as e:
+        print(f"Erro ao executar {nome_arquivo}: {e}")
 
 def abrir_pessoas():
-    caminho = os.path.join(os.path.dirname(__file__), "pessoas.py")
-    subprocess.run(["python", caminho])
+    executar_arquivo("pessoas.py")
 
 def abrir_veiculos():
-    caminho = os.path.join(os.path.dirname(__file__), "veiculos.py")
-    subprocess.run(["python", caminho])
+    executar_arquivo("veiculos.py")
 
 def abrir_locais():
-    caminho = os.path.join(os.path.dirname(__file__), "locais.py")
-    subprocess.run(["python", caminho])
+    executar_arquivo("locais.py")
 
-def voltar_login():
+def sair():
     janela.destroy()
-    caminho = os.path.join(os.path.dirname(__file__), "login.py")
-    subprocess.run(["python", caminho])
+    executar_arquivo("login.py")
 
+# Interface
 janela = Tk()
-janela.title("Menu Sistema")
-janela.geometry("500x300")
+janela.title("Menu Principal")
+janela.geometry("600x200")
 
 Label(janela, text="MENU PRINCIPAL", font=("Arial", 16, "bold")).pack(pady=20)
 
-frame_botoes = Frame(janela)
-frame_botoes.pack(pady=30)
+frame = Frame(janela)
+frame.pack(pady=20)
 
-btn1 = Button(frame_botoes, text="Pessoas", command=abrir_pessoas, width=15, height=2)
-btn1.grid(row=0, column=0, padx=10, pady=10)
-
-btn2 = Button(frame_botoes, text="Veículos", command=abrir_veiculos, width=15, height=2)
-btn2.grid(row=0, column=1, padx=10, pady=10)
-
-btn3 = Button(frame_botoes, text="Locais", command=abrir_locais, width=15, height=2)
-btn3.grid(row=1, column=0, padx=10, pady=10)
-
-btn_sair = Button(frame_botoes, text="Sair", command=voltar_login, width=15, height=2)
-btn_sair.grid(row=1, column=1, padx=10, pady=10)
+Button(frame, text="Pessoas", command=abrir_pessoas, width=12, height=2).pack(side=LEFT, padx=10)
+Button(frame, text="Veículos", command=abrir_veiculos, width=12, height=2).pack(side=LEFT, padx=10)
+Button(frame, text="Locais", command=abrir_locais, width=12, height=2).pack(side=LEFT, padx=10)
+Button(frame, text="Sair", command=sair, width=12, height=2).pack(side=LEFT, padx=10)
 
 janela.mainloop()

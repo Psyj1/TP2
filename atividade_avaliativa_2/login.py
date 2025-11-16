@@ -23,7 +23,6 @@ def entrar():
     else:
         messagebox.showerror("Erro", "Usuário ou senha incorretos!")
 
-
 lar_tela = tela.winfo_screenwidth()
 alt_tela = tela.winfo_screenheight()
 x = (lar_tela - 400) // 2
@@ -40,9 +39,9 @@ txt_senha = Entry(tela, width=25, show="*")
 txt_senha.place(x=120, y=80)
 
 btn_entrar = Button(tela, text="Entrar", command=entrar, width=10)
-btn_entrar.place(x=150, y=120)
+btn_entrar.place(x=300, y=40)  
 
 btn_sair = Button(tela, text="Sair", command=sair, width=10)
-btn_sair.place(x=250, y=120)
+btn_sair.place(x=300, y=80)   
 
 tela.mainloop()
